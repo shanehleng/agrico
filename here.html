@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta charset="UTF-8"></meta>
+  <title>The Cultural Map of the Philippines</title>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://js.api.here.com/v3/3.0/mapsjs-ui.css" />
+  <script type="text/javascript" charset="UTF-8"
+      src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+      src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+      src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+      src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+      src="https://js.api.here.com/v3/3.0/mapsjs-places.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.3/jquery.colorbox-min.js"></script>
+  <link rel="stylesheet" type="text/css" href="colorbox.css" />
+  <script>
+      $(document).ready(function(){
+        $('.iframe').colorbox({iframe:true, width:"80%", height:"80%"});
+        //Example of preserving a JavaScript event for inline calls.
+        $("#click").click(function(){ 
+          $('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+          return false;
+        });
+      });
+  </script>
+</head>
+
+<body>
+  <div class="row">
+            <div class="col-md-8" id="map" style="height: 1030px; background: grey" >
+              <script  type="text/javascript" charset="UTF-8" >
+    
+            /**
+             * Creates a new marker and adds it to a group
+             * @param {H.map.Group} group       The group holding the new marker
+             * @param {H.geo.Point} coordinate  The location of the marker
+             * @param {String} html             Data associated with the marker
+             */
+            function addMarkerToGroup(group, coordinate, html) {
+              var marker = new H.map.Marker(coordinate);
+              // add custom data to the marker
+              marker.setData(html);
+              group.addObject(marker);
+            }
+
+            var ncr = {
+                    lat: 14.598707, 
+                    lng: 121.004751
+                  };
+
+                  var car = {
+                    lat: 17.697409, 
+                    lng: 121.36322
+                  };
+                  var regionOne = {
+                    lat: 17.45128, 
+                    lng: 120.566711
+                  };
+                  var regionTwo = {
+                    lat: 17.294003, 
+                    lng: 122.110291
+                  };
+                  var regionThree = {
+                    lat: 16.062706, 
+                    lng: 120.907288
+                  };
+                  var regionFourA = {
+                    lat: 14.201553, 
+                    lng: 121.593933
+                  };
+                  var regionFourB = {
+                    lat: 11.966247, 
+                    lng: 120.140991
+                  };
+                  var regionFive = {
+                    lat: 13.616092, 
+                    lng: 123.19519
+                  };
+                  var regionSix = {
+                    lat: 11.266767, 
+                    lng: 122.382202
+                  };
+                  var regionSeven = {
+                    lat: 10.381927, 
+                    lng: 123.920288
+                  };
+                  var regionEight = {
+                    lat: 11.352951, 
+                    lng: 124.93103
+                  };
+                  var regionNine = {
+                    lat: 7.941732, 
+                    lng: 123.074341
+                  };
+                  var regionTen = {
+                    lat: 8.050527, 
+                    lng: 124.172974
+                  };
+                  var regionEleven = {
+                    lat: 7.451803, 
+                    lng: 125.678101
+                  };
+                  var regionTwelve = {
+                    lat: 6.786808, 
+                    lng: 124.3927
+                  };
+                  var regionThirteen = {
+                    lat: 8.984919, 
+                    lng: 125.864868
+                  };
+                  var armm = {
+                    lat: 6.033495, 
+                    lng: 121.173706
+                  };
+
+                  var nir = {
+                    lat: 9.88444,
+                    lng: 122.942505
+                  };
+            /**
+             * Add two markers showing the position of Liverpool and Manchester City football clubs.
+             * Clicking on a marker opens an infobubble which holds HTML content related to the marker.
+             * @param  {H.Map} map      A HERE Map instance within the application
+             */
+            function addInfoBubble(map) {
+              var group = new H.map.Group();
+
+              map.addObject(group);
+
+              // add 'tap' event listener, that opens info bubble, to the group
+              group.addEventListener('tap', function (evt) {
+                // event target is the marker itself, group is a parent event target
+                // for all objects that it contains
+                var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+                  // read custom data
+                  content: evt.target.getData()
+                });
+                // show info bubble
+                ui.addBubble(bubble);
+              }, false);
+
+              addMarkerToGroup(group, ncr,
+                '<div><a class=\'iframe\' class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Metro_Manila\' >National Capital Region</a>' +
+                '</div><div >The Capital <br>Population: 11,855,975</div>');
+
+              addMarkerToGroup(group, car,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Cordillera_Administrative_Region\' >Cordillera Administrative Region</a>' +
+                '</div><div >Home of Ifugao<br>Population: 1,616,867</div>');
+
+              addMarkerToGroup(group, regionOne,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Ilocos_Region\' >Ilocos Region</a>' +
+                '</div><div >Vigan City Longaniza<br>Population: 4,748,372</div>');
+
+              addMarkerToGroup(group, regionTwo,
+                '<div ><a class=\'iframe\' class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Cagayan_Valley\' >Cagayan Valley</a>' +
+                '</div><div >Tilapia Capital<br>Population: 3,229,163</div>');
+
+              addMarkerToGroup(group, regionThree,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Central_Luzon\' >Central Luzon</a>' +
+                '</div><div >Rice Granary of PH<br>Population: 10,137,737</div>');
+
+              addMarkerToGroup(group, regionFourA,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/CALABARZON\' >CALABARZON</a>' +
+                '</div><div >Home of Jose Rizal<br>Population: 12,609,803</div>');
+
+              addMarkerToGroup(group, regionFourB,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/MIMAROPA\' >MIMAROPA</a>' +
+                '</div><div >Home of Puerto Princesa Underground River<br>Population: 2,744,671</div>');
+
+              addMarkerToGroup(group, regionFive,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Bicol_Region\' >Bicol Region</a>' +
+                '</div><div >Home of Mount Mayon<br>Population: 5,420,411</div>');
+
+              addMarkerToGroup(group, regionSix,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Western_Visayas\' >Western Visayas</a>' +
+                '</div><div >World Famous Mango<br>Population: 4,194,579</div>');
+
+              addMarkerToGroup(group, regionSeven,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Central_Visayas\' >Central Visayas</a>' +
+                '</div><div >Cebu City: The Queen City of the South<br>Population:  6,800,180</div>');
+
+              addMarkerToGroup(group, regionEight,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Eastern_Visayas\' >Eastern Visayas</a>' +
+                '</div><div >Home of Tinikling and Kuratsa<br>Population: 4,101,322</div>');
+
+              addMarkerToGroup(group, regionNine,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Zamboanga_Peninsula\' >Zamboanga Peninsula</a>' +
+                '</div><div >Tangway ng Kasambuwangaan<br>Population: 3,407,353</div>');
+
+              addMarkerToGroup(group, regionTen,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Northern_Mindanao\' >Northern Mindanao</a>' +
+                '</div><div >Del Monte PH<br>Population: 4,297,323</div>');
+
+              addMarkerToGroup(group, regionEleven,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Davao_Region\' >Davao Region</a>' +
+                '</div><div >Home of Durian<br>Population: 45,362</div>');
+
+              addMarkerToGroup(group, regionTwelve,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/SOCCSKSARGEN\' >SOCCSKSARGEN</a>' +
+                '</div><div >Tuna Capital<br>Population: 4,109,571</div>');
+
+              addMarkerToGroup(group, regionThirteen,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Caraga\' >Caraga</a>' +
+                '</div><div >Surfing Capital of PH<br>Population: 2,429,224</div>');
+
+              addMarkerToGroup(group, armm,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Autonomous_Region_in_Muslim_Mindanao\' >Autonomous Region in Muslim Mindanao</a>' +
+                '</div><div >Home of Tausugs<br>Population: 3,256,140</div>');
+
+              addMarkerToGroup(group, nir,
+                '<div ><a class=\'iframe\' href=\'https://en.wikipedia.org/wiki/Negros_Island_Region\' >Negros Island Region</a>' +
+                '</div><div >Maskara Festival<br>Population: 4,194,525</div>');
+
+            }
+
+            function moveMapToNCR(map){
+              map.setCenter(regionThree);
+              map.setZoom(1000);
+            }
+
+            /**
+             * Boilerplate map initialization code starts below:
+             */
+
+            // initialize communication with the platform
+            var platform = new H.service.Platform({
+              'app_id': 'WZpWFIxuldegBsK3LCv1',
+              'app_code' : 'voZ7B4yaZnJmFqMFzbIWUw',
+              useCIT: true,
+              useHTTPS: true
+            });
+            var defaultLayers = platform.createDefaultLayers();
+
+            // initialize a map - this map is centered over Europe
+            var map = new H.Map(document.getElementById('map'),
+              defaultLayers.normal.map,{
+              center: {lat: 12.391513, lng: 122.497559},
+              zoom: 6
+            });
+
+            // MapEvents enables the event system
+            // Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+            var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+            // create default UI with layers provided by the platform
+            var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+            // Now use the map as required...
+            addInfoBubble(map);
+              </script>
+            </div>
+            <div class="col-md-4">
+              <img src="http://i.imgur.com/dQ5Co5u.png?1" style="width:100%;">
+            </div>
+          </div>
+
+</body>
+</html>
